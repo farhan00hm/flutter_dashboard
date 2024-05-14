@@ -10,7 +10,6 @@ class SideMenuWidget extends StatefulWidget {
 }
 
 class _SideMenuWidgetState extends State<SideMenuWidget> {
-
   int selectedIndex = 0;
 
   @override
@@ -18,24 +17,21 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
     final data = SideMenuData();
 
     return Container(
+      color: backgroundColor,
       padding: const EdgeInsets.symmetric(vertical: 80, horizontal: 20),
       child: ListView.builder(
-        itemCount: data.menu.length,
-        itemBuilder: (context,index) => buildMenuEntry(data, index)
-        ),
+          itemCount: data.menu.length,
+          itemBuilder: (context, index) => buildMenuEntry(data, index)),
     );
   }
 
-  Widget buildMenuEntry(SideMenuData data, int index){
+  Widget buildMenuEntry(SideMenuData data, int index) {
     final isSelected = selectedIndex == index;
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 5),
       decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(
-          Radius.circular(6.0)
-        ),
-        color: isSelected ? selectionColor : Colors.transparent
-      ),
+          borderRadius: const BorderRadius.all(Radius.circular(6.0)),
+          color: isSelected ? selectionColor : Colors.transparent),
       child: InkWell(
         onTap: () => setState(() {
           selectedIndex = index;
@@ -43,24 +39,22 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
         child: Row(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 13,vertical: 7),
+              padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 7),
               child: Icon(
                 data.menu[index].icon,
                 color: isSelected ? Colors.black : Colors.grey,
-                ),
+              ),
             ),
-              Text(
-                data.menu[index].title,
-                style: TextStyle(
+            Text(
+              data.menu[index].title,
+              style: TextStyle(
                   fontSize: 16,
                   color: isSelected ? Colors.black : Colors.grey,
-                  fontWeight: FontWeight.normal
-                ),
-                )
+                  fontWeight: FontWeight.normal),
+            )
           ],
         ),
       ),
     );
   }
-
 }

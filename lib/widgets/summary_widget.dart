@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kkp_frontend/const/constant.dart';
 import 'package:kkp_frontend/widgets/pie_chart_widget.dart';
 import 'package:kkp_frontend/widgets/scheduled_widget.dart';
 import 'package:kkp_frontend/widgets/summary_details_widget.dart';
@@ -9,6 +10,7 @@ class SummaryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: backgroundColor,
       child: const Column(
         children: [
           SizedBox(height: 20),
@@ -17,9 +19,13 @@ class SummaryWidget extends StatelessWidget {
             "Summary",
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
           ),
-          SizedBox(height: 16,),
+          SizedBox(
+            height: 16,
+          ),
           SummaryDetails(),
-          SizedBox(height: 40,),
+          SizedBox(
+            height: 40,
+          ),
           Scheduled()
         ],
       ),
