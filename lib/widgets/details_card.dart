@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kkp_frontend/data/healt_details.dart';
+import 'package:kkp_frontend/util/responsive.dart';
 import 'package:kkp_frontend/widgets/custom_card.dart';
 
 class DetailsCard extends StatelessWidget {
@@ -13,9 +14,9 @@ class DetailsCard extends StatelessWidget {
       itemCount: healtDetails.healtData.length,
       shrinkWrap: true,
       physics: const ScrollPhysics(),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 4,
-        crossAxisSpacing: 15,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: Responsive.isMobile(context) ? 2 : 4,
+        crossAxisSpacing: Responsive.isMobile(context) ? 12 : 15,
         mainAxisSpacing: 12.0
         ),
         itemBuilder: (context,index) => CustomCard(
